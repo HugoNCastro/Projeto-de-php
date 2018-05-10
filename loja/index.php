@@ -30,10 +30,10 @@ include ("logica-usuario.php");
     </table>
 </form>
 <?php if(usuarioEstaLogado()) {?>
-        <button class="btn btn-info">
-            <a href="logout.php">
-                Você realizou o login como <?=$GET['$email']?>, deseja realizar o logout ?
-            </a>
-        </button>
+        <p>Você realizou o login como <?=$GET['$email']?>, deseja realizar o logout ?</p>
+        <button class="btn btn-info"><a href="logout.php"></a></button>
+                
+           
+        
 <?php } ?>
 <?php include("rodape.php"); ?>
