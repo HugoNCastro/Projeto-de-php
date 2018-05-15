@@ -31,7 +31,9 @@ include ("logica-usuario.php");
 </form>
 <?php if(usuarioEstaLogado()) {?>
         <p>Você realizou o login como <?=$GET['$email']?>, deseja realizar o logout ?</p>
-        <button class="btn btn-info"><a href="logout.php"></a></button>
+        <button class="btn btn-info">
+            <a href="logout.php">Logout</a>
+        </button>
                 
            
         
