@@ -1,14 +1,14 @@
 <?php include("cabecalho.php");
       include("conecta.php");
       include("banco-produto.php");
-      include("logica-usuario.php"); ?>
+      include("logica-usuario.php"); 
 
-<?php if(isset($_SESSION["success"])) { ?>
-  <p class="alert-success"><?= $_SESSION["success"] ?></p>
-<?php
-  unset($_SESSION["success"]);
-} ?>
+verificaUsuario();
+?>
 
+<?php if(usuarioEstaLogado()){ ?>
+    <p class="text-success">Você está logado como 
+        <?= usuarioLogado() ?>. <a href="logout.php">Deslogar</a></p>
 <table class="table table-striped table-bordered">
 
     <?php
@@ -32,5 +32,8 @@
         endforeach
     ?>
 </table>
-
+<?php } else{
+    header("Location: index.php");
+    }
+?>
 <?php include("rodape.php"); ?>
