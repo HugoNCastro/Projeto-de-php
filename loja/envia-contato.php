@@ -1,4 +1,5 @@
 <?php 
+//Buscanco dados do formulário
 session_start();
 $nome = $_POST['nome'];
 $email = $_POST['email'];
@@ -19,7 +20,7 @@ $mail->Username = "alura.php.e.mysql@gmail.com";
 $mail->Password = "123456"
 
 //Dados do meu email, quem esta enviando o email
-$mail -> setFrom("alura.php.e.mysql@gmail.com", "Alura Curso PHP e MySQL");
+$mail->setFrom("alura.php.e.mysql@gmail.com", "Alura Curso PHP e MySQL");
 
 //endereço alvo quem vai receber o email
 $mail->addAddress("hugonaaman@gmail.com");
