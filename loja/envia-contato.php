@@ -13,11 +13,11 @@ $mail = new PHPMailer();
 
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;
-$mail->SMTPSecure = 'tls';
+$mail->Port = 465;
+$mail->SMTPSecure = 'ssl';
 $mail->SMTPAuth = true;
 $mail->Username = "hugonaaman@gmail.com";
-$mail->Password = "123456";
+$mail->Password = "guitarra100195";
 
 //Dados do meu email, quem esta enviando o email
 $mail->setFrom("hugonaaman@gmail.com", "Alura Curso PHP e MySQL");
@@ -40,12 +40,6 @@ if($mail->send()) {
     header("Location: contato.php");
 }
 die();
-
-
-
-
-
-
 
 
  ?>
