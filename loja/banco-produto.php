@@ -1,6 +1,6 @@
 <?php
 require_once("conecta.php");
-require_once("Categoria.php");
+require_once("class/Categoria.php");
 
 function listaProdutos($conexao) {
     $produtos = array();
@@ -26,13 +26,13 @@ function listaProdutos($conexao) {
 
 function insereProduto($conexao, Produto $produto) {
     $query = "insert into produtos (nome, preco, descricao, categoria_id, usado)
-        values ('{$produto->nome}', {$produto->preco}, '{$produto->descricao}', {$produto->categoria_id}, {$produto->usado})";
+        values ('{$produto->nome}', {$produto->preco}, '{$produto->descricao}', {$produto->categoria->id}, {$produto->usado})";
     return mysqli_query($conexao, $query);
 }
 
 function alteraProduto($conexao, Produto $produto) {
     $query = "update produtos set nome = '{$produto->nome}', preco = {$produto->preco}, descricao = '{$produto->descricao}',
-        categoria_id= {$produto->categoria_id}, usado = {$produto->usado} where id = '{$produto->id}'";
+        categoria_id= {$produto->categoria->id}, usado = {$produto->usado} where id = '{$produto->id}'";
     return mysqli_query($conexao, $query);
 }
 
@@ -44,5 +44,19 @@ function removeProduto($conexao, $id) {
 function buscaProduto($conexao, $id) {
     $query = "select * from produtos where id = {$id}";
     $resultado = mysqli_query($conexao, $query);
-    return mysqli_fetch_assoc($resultado);
+    $produto_buscado = mysqli_fetch_assoc($resultado);
+
+    $categoria = new Categoria();
+    $categoria->id = $produto_buscado['categoria_id'];
+
+    $produto = new Produto();
+    $produto->id = $produto_buscado['id'];
+    $produto->nome = $produto_buscado['nome'];
+    $produto->descricao = $produto_buscado['descricao'];
+    $produto->categoria = $categoria;
+    $produto->usado = $produto_buscado['usado'];
+    $produto->preco = $produto_buscado['preco'];
+
+    return $produto;
+
 }

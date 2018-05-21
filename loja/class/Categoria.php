@@ -1,6 +1,6 @@
 <?php 
 
-class Categoria(){
+class Categoria{
 	public $id;
 	public $nome;
 }
