@@ -1,16 +1,12 @@
-<?php 
-//Buscanco dados do formulário
+<?php
 session_start();
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$mensagem = $_POST['mensagem'];
+$nome = $_POST["nome"];
+$email = $_POST["email"];
+$mensagem = $_POST["mensagem"];
 
-//Inserindo o PhpAutoLoad
 require_once("PHPMailerAutoload.php");
 
-//criando um email a ser enviado
 $mail = new PHPMailer();
-
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->Port = 465;
