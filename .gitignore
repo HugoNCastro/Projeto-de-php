@@ -2,3 +2,9 @@
 loja/produto-formulario-base\.php
 
 loja/produto-base-formulario\.php
+
+*.woff2
+
+loja/css/bootstrap\.min\.css\.map
+
+loja/js/npm\.js
